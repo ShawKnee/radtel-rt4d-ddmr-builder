@@ -100,8 +100,11 @@ The builder expects a reviewed master CSV with the fields used by the script. Ru
 ```powershell
 python tools/build_rt4d_native_additive.py `
   --master path\to\wisconsin_repeater_master_2m_70cm.csv `
+  --fm38 examples\FM38_Wisconsin_current.csv `
   --native path\to\current_radio_backup.ddmr `
   --output-dir path\to\output
 ```
 
 The generated filename includes `CPS_CHECK_REQUIRED` intentionally. Open it in the same RT-4D CPS version that created the source file and inspect the added channels and zones before writing anything to the radio. The current mapping is limited to CPS V2 analog wide-FM channels with a transmit CTCSS tone; it does not build or alter DMR contacts, receive groups, radio IDs, or existing digital relationships.
+
+The optional `--fm38` file demonstrates adding a reviewed network-specific source and creating an `FM38 NETWORK` zone without changing existing channels. FM38-owned sites use the network-published 123.0 Hz access tone; affiliates retain their individually published tones.
