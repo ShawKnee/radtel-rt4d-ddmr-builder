@@ -1,0 +1,24 @@
+callsign,location,county_normalized,rx_mhz,tx_mhz,band,mode_source,mode_crosscheck,access_crosscheck,operational_status_crosscheck,approx_distance_miles,distance_group,priority,region,transmit_ready,crosscheck_source,network_source
+W9CVA,Meteor,Sawyer,145.11000,144.51000,2m,,FMAllStar,110.9,OPEN,,Over 100 miles,5,Northern Wisconsin,YES,RepeaterBook FM38 System snapshot 2026-11-17,FM38 System
+N9GMT,Lake Geneva,Walworth,441.52500,446.52500,70cm,,FMAllStar,123.0,OPEN,,50-100 miles,4,Southeastern Wisconsin,YES,FM38 official list and RepeaterBook 2026-11-17,FM38 System
+W9UUM,La Crosse,La Crosse,442.30000,447.30000,70cm,,FMAllStar,131.8,OPEN,,Over 100 miles,5,Western Wisconsin,YES,RepeaterBook FM38 System snapshot 2026-11-17,FM38 System
+N9GMT,Allenton,Washington,442.35000,447.35000,70cm,,FMAllStar,123.0,OPEN,,Within 25 miles,2,Southeastern Wisconsin,YES,FM38 official list and RepeaterBook 2026-11-17,FM38 System
+W9MRA,Wisconsin Rapids,Wood,442.42500,447.42500,70cm,,FM,114.8,OPEN,,50-100 miles,4,Central Wisconsin,YES,FM38 official list and RepeaterBook 2026-11-17,FM38 System
+N9GMT,Manitowoc,Manitowoc,442.60000,447.60000,70cm,,FMAllStar,123.0,OPEN,,50-100 miles,4,Northeastern Wisconsin,YES,FM38 official list and RepeaterBook 2026-11-17,FM38 System
+KA9VZD,Trevor,Kenosha,442.60000,447.60000,70cm,,FMAllStar,123.0,OPEN,,50-100 miles,4,Southeastern Wisconsin,YES,FM38 official list and RepeaterBook 2026-11-17,FM38 System
+N9GMT,Graham Corners,Sheboygan,442.70000,447.70000,70cm,,FMAllStar,123.0,OPEN,,25-50 miles,3,Northeastern Wisconsin,YES,FM38 official list and RepeaterBook 2026-11-17,FM38 System
+N9GMT,Green Bay,Brown,442.80000,447.80000,70cm,,FMAllStar,123.0,OPEN,,50-100 miles,4,Northeastern Wisconsin,YES,FM38 official list and RepeaterBook 2026-11-17,FM38 System
+N9GMT,Cambridge,Dane,443.00000,448.00000,70cm,,FMAllStar,123.0,OPEN,,25-50 miles,3,South-central Wisconsin,YES,FM38 official list and RepeaterBook 2026-11-17,FM38 System
+AC9F,Iola,Waupaca,443.60000,448.60000,70cm,,FMAllStar,114.8,OPEN,,50-100 miles,4,Central Wisconsin,YES,FM38 official list and RepeaterBook 2026-11-17,FM38 System
+N9GMT,Janesville,Rock,443.62500,448.62500,70cm,,FMAllStar,123.0,OPEN,,50-100 miles,4,South-central Wisconsin,YES,FM38 official list and RepeaterBook 2026-11-17,FM38 System
+N9GMT,Oshkosh,Winnebago,443.62500,448.62500,70cm,,FMAllStar,123.0,OPEN,,25-50 miles,3,Northeastern Wisconsin,YES,FM38 official list and RepeaterBook 2026-11-17,FM38 System
+N9GMT,Milwaukee,Milwaukee,443.80000,448.80000,70cm,,FMAllStar,123.0,OPEN,,25-50 miles,3,Southeastern Wisconsin,YES,FM38 official list and RepeaterBook 2026-11-17,FM38 System
+W9BCC,Wausau,Marathon,444.30000,449.30000,70cm,,FMAllStar,114.8,OPEN,,Over 100 miles,5,Central Wisconsin,YES,RepeaterBook FM38 System snapshot 2026-11-17,FM38 System
+W9CVA,Chippewa Falls,Chippewa,444.35000,449.35000,70cm,,FMAllStar,110.9,OPEN,,Over 100 miles,5,Western Wisconsin,YES,RepeaterBook FM38 System snapshot 2026-11-17,FM38 System
+N9GMT,Madison,Dane,444.47500,449.47500,70cm,,FMAllStar,123.0,OPEN,,25-50 miles,3,South-central Wisconsin,YES,FM38 official list and RepeaterBook 2026-11-17,FM38 System
+N9GMT,Sturgeon Bay,Door,444.47500,449.47500,70cm,,FMAllStar,123.0,OPEN,,Over 100 miles,5,Northeastern Wisconsin,YES,FM38 official list and RepeaterBook 2026-11-17,FM38 System
+N9GMT,Baraboo,Sauk,444.50000,449.50000,70cm,,FMAllStar,123.0,OPEN,,50-100 miles,4,South-central Wisconsin,YES,FM38 official list and RepeaterBook 2026-11-17,FM38 System
+KB9QJN,Merrill,Lincoln,444.57500,449.57500,70cm,,FMAllStar,114.8,OPEN,,Over 100 miles,5,Northern Wisconsin,YES,RepeaterBook FM38 System snapshot 2026-11-17,FM38 System
+N9GMT,Fond du Lac,Fond du Lac,444.60000,449.60000,70cm,,FMAllStar,123.0,OPEN,,25-50 miles,3,Northeastern Wisconsin,YES,FM38 official list and RepeaterBook 2026-11-17,FM38 System
+N9GMT,Ripon,Fond du Lac,444.95000,449.95000,70cm,,FMAllStar,123.0,OPEN,,25-50 miles,3,Northeastern Wisconsin,YES,FM38 official list and RepeaterBook 2026-11-17,FM38 System
+
