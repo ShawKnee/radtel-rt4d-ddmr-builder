@@ -125,6 +125,7 @@ def main() -> None:
         description="Add verified analogue Wisconsin repeaters to a CPS V2 RT-4D native file"
     )
     parser.add_argument("--master", type=Path, required=True)
+    parser.add_argument("--fm38", type=Path)
     parser.add_argument("--native", type=Path, required=True)
     parser.add_argument("--output-dir", type=Path, required=True)
     args = parser.parse_args()
@@ -162,14 +163,38 @@ def main() -> None:
         raise AssertionError("Occupied-channel scan failed")
 
     candidates = verified_analog_candidates(load_csv(args.master))
-    skipped = []
+    if args.fm38:
+        fm38_rows = load_csv(args.fm38)
+        by_identity = {
+            (row["callsign"].upper(), row["location"].upper(), *frequency_pair(row)): row
+            for row in candidates
+        }
+        for network_row in fm38_rows:
+            identity = (
+                network_row["callsign"].upper(),
+                network_row["location"].upper(),
+                *frequency_pair(network_row),
+            )
+            if identity in by_identity:
+                by_identity[identity]["network_source"] = "FM38 System"
+            else:
+                candidates.append(network_row)
+                by_identity[identity] = network_row
+        candidates.sort(
+            key=lambda row: (
+                int(row["priority"]),
+                float(row["approx_distance_miles"]) if row["approx_distance_miles"] else 9999,
+                row["region"], row["location"], float(row["rx_mhz"]),
+            )
+        )
+    overlaps = []
     additions = []
     next_channel = highest + 1
     for row in candidates:
         pair = frequency_pair(row)
         matches = occupied_analog_pairs.get(pair, [])
         if matches:
-            skipped.append({
+            overlaps.append({
                 "callsign": row["callsign"],
                 "location": row["location"],
                 "region": row["region"],
@@ -178,9 +203,8 @@ def main() -> None:
                 "access": row["access_crosscheck"],
                 "existing_channels": ";".join(str(item["channel"]) for item in matches),
                 "existing_aliases": ";".join(item["alias"] for item in matches),
-                "handling": "Skipped: same analogue RX/TX pair already exists in current native file",
+                "handling": "Added as a verified TX channel; existing matching record preserved unchanged",
             })
-            continue
         if next_channel > CHANNEL_COUNT:
             raise RuntimeError("RT-4D channel bank is full")
         alias = make_alias(row, used_aliases)
@@ -205,6 +229,12 @@ def main() -> None:
         "Western Wisconsin": "WI WEST",
     }
     zones: list[tuple[str, list[int]]] = []
+    fm38_members = [
+        row["channel"] for row in additions
+        if row.get("network_source") == "FM38 System"
+    ]
+    if fm38_members:
+        zones.append(("FM38 NETWORK", fm38_members))
     nearby = [
         row["channel"] for row in additions
         if row["distance_group"] in ("Within 25 miles", "25-50 miles")
@@ -307,7 +337,7 @@ def main() -> None:
         "source": row["crosscheck_source"],
     } for row in additions]
     write_csv(args.output_dir / "rt4d_new_channels_added.csv", addition_rows)
-    write_csv(args.output_dir / "rt4d_skipped_existing_rx_tx_pairs.csv", skipped)
+    write_csv(args.output_dir / "rt4d_existing_rx_tx_overlap_review.csv", overlaps)
     write_csv(args.output_dir / "rt4d_shared_frequency_review.csv", shared, [
         "rx_mhz", "tx_mhz", "channel", "alias", "callsign", "location",
         "access", "region", "handling",
@@ -323,7 +353,8 @@ def main() -> None:
         "existing_channels_preserved": len(occupied),
         "existing_zones_preserved": existing_zone_count,
         "verified_analog_candidates": len(candidates),
-        "skipped_existing_rx_tx_pairs": len(skipped),
+        "existing_rx_tx_pair_overlaps_preserved": len(overlaps),
+        "skipped_verified_candidates": 0,
         "new_channels_added": len(additions),
         "first_new_channel": additions[0]["channel"] if additions else "",
         "last_new_channel": additions[-1]["channel"] if additions else "",
